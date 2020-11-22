@@ -1,0 +1,122 @@
+name:                inventory-repair-login
+version:             0.1.0.0
+github:              "githubuser/inventory-repair-login"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2019 Author name here"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/inventory-repair-login#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- aeson >= 0.8.1.0
+- aeson-casing
+- yaml
+- errors >= 2
+- blaze-builder >= 0.3
+- blaze-html >= 0.7
+- bytestring >= 0.10
+- cereal     >= 0.4
+- containers >= 0.4
+- cookie     >= 0.4
+- cryptonite >= 0.8
+- data-default-generics >= 0.3
+- directory
+- http-conduit > 2
+- http-types >= 0.8
+- jose-jwt   >= 0.7
+- memory     >= 0.10
+- mtl >= 2.1.3.1
+- postgresql-simple >= 0.5.1
+- reroute >= 0.4
+- resource-pool > 0.2.3
+- text  >= 0.11
+- time
+- transformers >= 0.3
+- unordered-containers >= 0.2
+- uri-bytestring >= 0.2
+- uuid >= 1.3
+- wai >= 3.0.0.2
+- wai-extra >= 3
+
+library:
+  source-dirs: src
+  when:
+  - condition: (flag(dev)) || (flag(library-only))
+    then:
+      ghc-options:
+      - -Wall
+      - -fwarn-tabs
+      - -O0
+      cpp-options: -DDEVELOPMENT
+    else:
+      ghc-options:
+      - -Wall
+      - -fwarn-tabs
+      - -O2
+
+
+# Runnable executable for our application
+executables:
+  inventory-repair-login:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - inventory-repair-login
+    - base
+    - bytestring
+    - cryptonite
+    - directory
+    - memory
+    - monad-logger >= 0.3
+    - optparse-applicative
+    - postgresql-simple
+    - reroute
+    - resource-pool
+    - text
+    - wai-app-static >= 3.1.4
+    - wai-extra
+    - warp >= 3
+    when:
+    - condition: flag(library-only)
+      buildable: false
+
+# Test suite
+tests:
+  inventory-repair-login-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options: -Wall
+    dependencies:
+    - inventory-repair-login
+    - HUnit
+    - network-uri
+    - hspec >=2.0.0
+    - aeson-qq
+    - yesod-test
+
+# Define flags used by "yesod devel" to make compilation faster
+flags:
+  library-only:
+    description: Build for use with "auth devel"
+    manual: false
+    default: false
+  dev:
+    description: Turn on development settings, like auto-reload templates.
+    manual: false
+    default: false

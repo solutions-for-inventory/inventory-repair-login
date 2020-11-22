@@ -1,0 +1,13 @@
+#webapps configs
+webappsDir:     "_env:APP_WEBAPPS_DIR:webroot"
+port:           "_env:APP_PORT:8081"
+
+#persistence configs
+
+database:
+  user:     "_env:DB_USER:inventory_user"
+  password: "_env:DB_PASSWORD:inventory_password"
+  host:     "_env:DB_HOST:192.168.0.100"
+  port:     "_env:DB_PORT:5432"
+  database: "_env:DB_DATABASE:inventory_repair_db"
+  poolsize: "_env:DB_POOL_SIZE:10"
