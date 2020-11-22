@@ -1,6 +1,6 @@
 #webapps configs
 webappsDir:     "_env:APP_WEBAPPS_DIR:webroot"
-port:           "_env:APP_PORT:8081"
+port:           "_env:APP_PORT:3000"
 
 #persistence configs
 

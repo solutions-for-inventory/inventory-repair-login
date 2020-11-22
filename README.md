@@ -40,5 +40,6 @@ $ docker run -it --rm  --env DB_HOST=192.168.99.100 -p 4200:4200 inventory-repai
 ```
 
 #### Test Example
-http://localhost:3000/oauth/authorize?client_id=app&state=state_code&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:8080/app
-
+```
+http://localhost:3001/oauth/authorize?client_id=app&state=state_code&response_type=code&redirect_uri=http://localhost:3000/app
+```
