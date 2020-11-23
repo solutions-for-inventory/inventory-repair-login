@@ -7,7 +7,6 @@ pipeline {
         stage('CleanOldBinary') {
             steps {
                catchError {
-//                 sh 'rm -rf webapps/dist'
                  sh 'rm -rf .stack-work'
                  sh 'docker stop inventory-repair-login'
                  sh 'docker rm inventory-repair-login'
@@ -39,10 +38,11 @@ pipeline {
                 script {
                     docker.image("inventory-repair-login:1.0")
                     .run('--name inventory-repair-login --net=host '
+                        + '-e APP_PORT=3001 '
                         + '-e DB_USER=inventory_user '
                         + '-e DB_PASSWORD=inventory_password '
                         + '-e DB_HOST=192.168.0.100 '
-                        + '-e DB_DATABASE=inventory_db'
+                        + '-e DB_DATABASE=inventory_repair_db'
                     )
                 }
             }
