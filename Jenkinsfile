@@ -38,7 +38,7 @@ pipeline {
                 script {
                     docker.image("inventory-repair-login:1.0")
                     .run('--name inventory-repair-login --net=host '
-                        + '-e APP_PORT=3000 '
+                        + '-e APP_PORT=3001 '
                         + '-e DB_USER=inventory_user '
                         + '-e DB_PASSWORD=inventory_password '
                         + '-e DB_HOST=192.168.0.100 '
