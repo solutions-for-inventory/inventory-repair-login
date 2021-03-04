@@ -10,7 +10,7 @@ pipeline {
                  //sh 'rm -rf .stack-work'
                  //sh 'docker stop inventory-repair-login'
                  //sh 'docker rm inventory-repair-login'
-                 sh 'docker images -a | grep "inventory-repair-login" | awk \'{print $3}\' | xargs docker rmi'
+                 //sh 'docker images -a | grep "inventory-repair-login" | awk \'{print $3}\' | xargs docker rmi'
                }
             }
         }
