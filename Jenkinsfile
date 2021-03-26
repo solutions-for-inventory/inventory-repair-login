@@ -23,7 +23,8 @@ pipeline {
             steps {
                 echo 'Starting to build docker image'
                 script {
-                    def customImage = docker.build("inventory-repair-login:1.0 --network=host")
+//                    def customImage = docker.build("inventory-repair-login:1.0 --network=host")
+                    def customImage = docker.build("inventory-repair-login:1.0")
                 }
             }
         }
@@ -31,6 +32,12 @@ pipeline {
             steps {
                 echo 'Testing..'
             }
+        }
+
+        stage('push docker image') {
+                    steps {
+                        sh 'echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin'
+                    }
         }
         /*
         stage('Deploy') {
