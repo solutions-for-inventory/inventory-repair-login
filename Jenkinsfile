@@ -38,6 +38,7 @@ pipeline {
                     steps {
                         sh 'echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin'
                         sh 'docker image tag inventory-repair-login:1.0 ghcr.io/solutions-for-inventory/inventory-repair-login:1.0'
+                        sh 'docker push ghcr.io/solutions-for-inventory/inventory-repair-login:1.0'
                     }
         }
         /*
